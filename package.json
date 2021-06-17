@@ -1,0 +1,30 @@
+{
+  "name": "types",
+  "version": "0.0.1",
+  "description": "types",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brombaut/types.git"
+  },
+  "keywords": [],
+  "author": "Ben Rombaut",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brombaut/types/issues"
+  },
+  "homepage": "https://github.com/brombaut/types#readme",
+  "devDependencies": {
+    "typescript": "^4.3.3"
+  },
+  "dependencies": {
+    "firebase-firestore-facade": "^0.2.0"
+  }
+}
