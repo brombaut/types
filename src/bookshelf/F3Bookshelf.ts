@@ -4,12 +4,17 @@ import { FirestoreBook } from './FirestoreBook';
 import { F3Interfacer, F3Wrapper, FirebaseConfigurer, IFirestoreType } from "firebase-firestore-facade";
 
 export class F3Bookshelf implements F3Interfacer<Book> {
-  private _f3: F3Wrapper<Book>;
+  private _f3!: F3Wrapper<Book>;
+  private _firebaseConfig: FirebaseConfigurer;
   private _collection = 'books_prod';
   private _mapper: (o: IFirestoreType) => Book = (o: IFirestoreType) => new Book(o as FirestoreBook);
 
   constructor(firebaseConfig: FirebaseConfigurer) {
-    this._f3 = new F3Wrapper<Book>(firebaseConfig, this._collection, this._mapper);
+    this._firebaseConfig = firebaseConfig;
+  }
+  async init(): Promise<F3Bookshelf> {
+    this._f3 = await new F3Wrapper<Book>(this._firebaseConfig, this._collection, this._mapper).init();
+    return this;
   }
   async get(): Promise<Book[]> {
     return await this._f3.get();
@@ -38,5 +43,8 @@ export class F3Bookshelf implements F3Interfacer<Book> {
   }
   async delete(t: Book): Promise<void> {
     return await this._f3.delete(t);
+  }
+  async closeConnection(): Promise<void> {
+    await this._f3.closeConnection();
   }
 }
