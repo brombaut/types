@@ -5,7 +5,7 @@ import { F3Interfacer, F3Wrapper, FirebaseConfigurer, IFirestoreType } from "fir
 
 export class F3Bookshelf implements F3Interfacer<Book> {
   private _f3: F3Wrapper<Book>;
-  private _collection = 'books';
+  private _collection = 'books_prod';
   private _mapper: (o: IFirestoreType) => Book = (o: IFirestoreType) => new Book(o as FirestoreBook);
 
   constructor(firebaseConfig: FirebaseConfigurer) {
