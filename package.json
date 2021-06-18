@@ -1,7 +1,7 @@
 {
-  "name": "types",
+  "name": "@brombaut/types",
   "version": "0.0.1",
-  "description": "types",
+  "description": "@brombaut/types",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -17,6 +17,7 @@
   "keywords": [],
   "author": "Ben Rombaut",
   "license": "ISC",
+  "private": false,
   "bugs": {
     "url": "https://github.com/brombaut/types/issues"
   },
@@ -26,5 +27,8 @@
   },
   "dependencies": {
     "firebase-firestore-facade": "^0.2.0"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
