@@ -3,6 +3,7 @@ import { Shelf } from './Shelf';
 
 export class FirestoreBook implements IFirestoreType {
   id!: string;
+  goodreads_review_id!: string;
   isbn13!: string;
   title!: string;
   shortTitle!: string;

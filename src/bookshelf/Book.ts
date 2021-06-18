@@ -4,6 +4,7 @@ import { FirestoreDateTranslator, ILocalType } from 'firebase-firestore-facade';
 
 export class Book implements ILocalType {
   private _id: string;
+  private _goodreads_review_id: string;
   private _isbn13: string;
   private _title: string;
   private _shortTitle: string;
@@ -21,6 +22,7 @@ export class Book implements ILocalType {
       throw new Error('DTO does not have an ID');
     }
     this._id = dto.id;
+    this._goodreads_review_id = dto.goodreads_review_id;
     this._isbn13 = dto.isbn13;
     this._title = dto.title;
     this._shortTitle = dto.shortTitle;
@@ -53,6 +55,7 @@ export class Book implements ILocalType {
     }
     return {
       id: this._id,
+      goodreads_review_id: this._goodreads_review_id,
       isbn13: this._isbn13,
       title: this._title,
       shortTitle: this._shortTitle,
@@ -69,6 +72,9 @@ export class Book implements ILocalType {
 
   get id(): string {
     return this._id;
+  }
+  get goodreads_review_id(): string {
+    return this._goodreads_review_id;
   }
   get isbn13(): string {
     return this._isbn13;
@@ -140,6 +146,7 @@ export class Book implements ILocalType {
   static attributes(): string[] {
     return [
       'id',
+      'goodreads_review_id',
       'isbn13',
       'title',
       'shortTitle',
