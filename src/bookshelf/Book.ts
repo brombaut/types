@@ -103,6 +103,9 @@ export class Book implements ILocalType {
   get onPage(): number | null {
     return this._onPage;
   }
+  set onPage(x: number | null) {
+    this._onPage = x
+  }
   get dateStarted(): Date | null {
     return this._dateStarted;
   }
@@ -123,6 +126,9 @@ export class Book implements ILocalType {
   }
   get rating(): number | null {
     return this._rating;
+  }
+  set rating(x: number | null) {
+    this._rating = x;
   }
 
   startReading(): void {
