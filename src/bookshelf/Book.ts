@@ -161,6 +161,26 @@ export class Book implements ILocalType {
     this._onPage = this._numPages;
   }
 
+  compareToDateFinished(b: Book): number {
+    if (!this.dateFinished) {
+      return -1;
+    }
+    if (!b.dateFinished) {
+      return 1;
+    }
+    return b.dateFinished.getTime() - this.dateFinished.getTime();
+  }
+
+  compareToDateStarted(b: Book): number {
+    if (!this.dateStarted) {
+      return -1;
+    }
+    if (!b.dateStarted) {
+      return 1;
+    }
+    return b.dateStarted.getTime() - this.dateStarted.getTime();
+  }
+
   static attributes(): string[] {
     return [
       'id',
