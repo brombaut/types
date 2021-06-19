@@ -109,6 +109,12 @@ export class Book implements ILocalType {
   get dateStarted(): Date | null {
     return this._dateStarted;
   }
+  get yearStarted(): number {
+    if (!this.dateStarted) {
+      return -1;
+    }
+    return this.dateStarted.getFullYear();
+  }
   get dateStartedFormatted(): string {
     if (!this.dateStarted) {
       return '';
@@ -117,6 +123,12 @@ export class Book implements ILocalType {
   }
   get dateFinished(): Date | null {
     return this._dateFinished;
+  }
+  get yearFinished(): number {
+    if (!this.dateFinished) {
+      return -1;
+    }
+    return this.dateFinished.getFullYear();
   }
   get dateFinishedFormatted(): string {
     if (!this.dateFinished) {
