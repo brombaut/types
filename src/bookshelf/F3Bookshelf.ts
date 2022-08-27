@@ -34,6 +34,11 @@ export class F3Bookshelf implements F3Interfacer<Book> {
     return await this._f3.put(t);
   }
   async post(t: FirestoreBook): Promise<Book> {
+    const existingBooks = await this.get();
+    const bookReviewIdExists = existingBooks.some((b: Book) => b.goodreads_review_id === t.goodreads_review_id);
+    if (bookReviewIdExists) {
+      throw new Error(`Book goodreads_review_id exists: ${t.goodreads_review_id}`);
+    }
     return await this._f3.post(t);
   }
   async delete(t: Book): Promise<void> {
